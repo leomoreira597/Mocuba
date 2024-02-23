@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mocuba/view/pages/auth_or_app_page/auth_or_app_page.dart';
 import 'package:mocuba/view/pages/auth_page/auth_page.dart';
 import 'package:mocuba/view/pages/loading_page/loading_page.dart';
 import 'package:mocuba/view/widgets/auth_form.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AuthPage(),
+      home: const AuthOrAppPage(),
     );
   }
 }
