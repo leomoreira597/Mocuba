@@ -4,6 +4,8 @@ import 'package:mocuba/model/models/user_model.dart';
 import 'package:mocuba/model/services/auth/auth_service.dart';
 
 class AuthMockService implements AuthService {
+  static Map<String, UserModel> _users = {};
+  static UserModel? _currentUser;
   @override
   // TODO: implement currentUser
   UserModel? get currentUser {
