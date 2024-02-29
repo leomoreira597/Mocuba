@@ -5,12 +5,20 @@ import 'package:mocuba/model/services/auth/auth_service.dart';
 import 'dart:async';
 
 class AuthMockService implements AuthService {
-  static Map<String, UserModel> _users = {};
+  static final _defaultUser = UserModel(
+    id: '1',
+    name: 'Teste',
+    email: 'teste@gmail.com',
+    imageURL: 'assets/images/avatar.png',
+  );
+  static Map<String, UserModel> _users = {
+    _defaultUser.email: _defaultUser,
+  };
   static UserModel? _currentUser;
   static MultiStreamController<UserModel?>? _controller;
   static final _userStream = Stream<UserModel?>.multi((controller) {
     _controller = controller;
-    _updateUser(null);
+    _updateUser(_defaultUser);
   });
 
   @override
@@ -40,7 +48,7 @@ class AuthMockService implements AuthService {
       id: Random().nextDouble().toString(),
       name: name,
       email: email,
-      imageURL: image?.path ?? "//",
+      imageURL: image?.path ?? "assets/images/avatar.png",
     );
     _users.putIfAbsent(email, () => newUser);
     _updateUser(newUser);
