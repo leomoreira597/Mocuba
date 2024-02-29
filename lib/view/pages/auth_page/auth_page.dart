@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mocuba/model/models/auth_form_data.dart';
-import 'package:mocuba/model/services/auth/auth_mock_service.dart';
 import 'package:mocuba/view/widgets/auth_form.dart';
+
+import '../../../model/services/auth/auth_service.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -19,12 +20,12 @@ class _AuthPageState extends State<AuthPage> {
         _isLoading = true;
       });
       if (formData.isLogin) {
-        await AuthMockService().login(
+        await AuthService().login(
           formData.email,
           formData.password,
         );
       } else {
-        await AuthMockService().signup(
+        await AuthService().signup(
           formData.name,
           formData.email,
           formData.password,

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:mocuba/model/models/user_model.dart';
+import 'package:mocuba/model/services/auth/auth_mock_service.dart';
 
 abstract class AuthService {
   UserModel? get currentUser;
@@ -19,4 +20,7 @@ abstract class AuthService {
   );
 
   Future<void> logout();
+  factory AuthService(){
+    return AuthMockService();
+  }
 }
